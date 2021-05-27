@@ -12,9 +12,9 @@ segmentDisplay = DSPSEG.TM1637(clk=4, dio=17)
 tempSensor = MLX.MLX90614(board.I2C())
 
 def i2c_lcd(temperature):
-    lcdDisplay = DSPLCD.lcd()
+    lcdDisplay = DSPLCD.Lcd()
     lcdDisplay.lcd_display_string("=TEMPERATURE=", 1)  # Write line of text to first line of display
-    lcdDisplay.lcd_display_string(str(temperature), 2)  # Write line of text to second line of display
+    lcdDisplay.lcd_display_string(str("{:.2f}".format(temperature)), 2)  # Write line of text to second line of display
 
 
 def read_rfid():
@@ -23,7 +23,7 @@ def read_rfid():
 
 while 1:
     temperature = tempSensor.object_temperature
-    segmentDisplay.temperature(temperature)
+    #segmentDisplay.temperature(temperature)
     i2c_lcd(temperature)
     id = read_rfid()
     sleep(1)
