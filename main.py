@@ -5,6 +5,9 @@ import drivers as DSPLCD
 import adafruit_mlx90614 as MLX
 import board
 
+#test from mac
+dip = "sample"
+
 segmentDisplay = DSPSEG.TM1637(clk=4, dio=17)
 tempSensor = MLX.MLX90614(board.I2C())
 
